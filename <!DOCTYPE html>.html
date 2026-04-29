@@ -115,6 +115,7 @@
         }
     </style>
     <script>
+        //84072000
         function pesquisarCep(){
             const cep = document.getElementById("CEP").value
             const link = "https://viacep.com.br/ws/" + cep + "/json/?callback=preencherEndereco"
@@ -123,8 +124,14 @@
             document.body.appendChild(script)
         }
         function preencherEndereco(conteudo){
-            alert(JSON.stringify(conteudo))
+            //if para verificar se o conteudo possui erro
+
+            document.getElementById("Rua").value = conteudo.logradouro
+            document.getElementById("Bairro").value = conteudo.bairro
+            document.getElementById("Cidade").value = conteudo.cidade
+            document.getElementById("Estado").value = conteudo.estado
         }
+
     </script>
 </head>
 <body>
