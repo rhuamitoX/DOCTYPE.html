@@ -117,6 +117,15 @@
     <script>
         //84072000
         function pesquisarCep(){
+            //limpar formulario
+            document.getElementById("Rua").value =""
+            document.getElementById("Bairro").value = ""
+            document.getElementById("Cidade").value = ""
+            document.getElementById("Estado").value = ""
+
+            var validacep = /^[0-9]{8}$/
+            //salvar o código aqui
+            
             const cep = document.getElementById("CEP").value
             const link = "https://viacep.com.br/ws/" + cep + "/json/?callback=preencherEndereco"
             var script = document.createElement("script")
@@ -125,13 +134,16 @@
         }
         function preencherEndereco(conteudo){
             if (!("erro in conteudo")){    
-                document.getElementById("Rua").value = conteudo.logradouro
-                document.getElementById("Bairro").value = conteudo.bairro
-                document.getElementById("Cidade").value = conteudo.cidade
-                document.getElementById("Estado").value = conteudo.estado
+            document.getElementById("Rua").value = conteudo.logradouro
+            document.getElementById("Bairro").value = conteudo.bairro
+            document.getElementById("Cidade").value = conteudo.cidade
+            document.getElementById("Estado").value = conteudo.estado
             } else {
                 // criar um parágrafo para mostrar o erro
-                // <p id="erro"><
+                // <p id="erro"></p>
+                erro.textContent = "0 CEP digitando não existe"
+            }
+        }
     </script>
 </head>
 <body>
